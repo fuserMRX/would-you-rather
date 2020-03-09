@@ -18,6 +18,9 @@ const App = () => {
                 >
                 Learn React
                 </a>
+                <img src="https://img.icons8.com/doodle/140/000000/anonymous-mask.png"></img>
+                <img src="https://img.icons8.com/doodle/140/000000/futurama-bender.png" />
+                <img src="https://img.icons8.com/doodle/140/000000/walter-white.png"></img>
             </header>
         </div>
     );
