@@ -3,7 +3,7 @@ import {
     _getQuestions,
 } from './_DATA.js';
 
-export function getInitialData() {
+export const getInitialData = () => {
     return Promise.all([
         _getUsers(),
         _getQuestions(),
