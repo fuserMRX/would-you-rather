@@ -7,7 +7,7 @@ import { BrowserRouter as Router, Route } from 'react-router-dom';
 // Local imports
 import Login from './components/Login';
 import Home from './components/Home';
-import QuestionPoll from './components/QuestionPoll';
+import QuestionPollWrapper from './components/QuestionPollWrapper';
 import { handleInitialData } from './actions/shared';
 
 
@@ -23,7 +23,7 @@ class App extends React.Component {
                     {this.props.enableLogin ?
                         <div>
                             <Route path='/' exact component={Home} />
-                            <Route path='/questions/:question_id' component={QuestionPoll} />
+                            <Route path='/questions/:question_id' component={QuestionPollWrapper} />
                         </div>:
                         <Login />
                     }
