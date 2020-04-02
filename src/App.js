@@ -8,6 +8,7 @@ import { BrowserRouter as Router, Route } from 'react-router-dom';
 import Login from './components/Login';
 import Home from './components/Home';
 import QuestionPollWrapper from './components/QuestionPollWrapper';
+import QuestionCreater from './components/QuestionCreater';
 import { handleInitialData } from './actions/shared';
 
 
@@ -24,6 +25,7 @@ class App extends React.Component {
                         <div>
                             <Route path='/' exact component={Home} />
                             <Route path='/questions/:question_id' component={QuestionPollWrapper} />
+                            <Route path='/add' component={QuestionCreater} />
                         </div>:
                         <Login />
                     }

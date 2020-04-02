@@ -25,7 +25,7 @@ class QuestionPoll extends Component {
         const authedUser = this.props.questionInfo.authedUser;
         const answer = this.state.value;
         const { dispatch } = this.props;
-        dispatch(handleSaveAnswer({authedUser, qid, answer}));
+        dispatch(handleSaveAnswer({ authedUser, qid, answer }));
     }
 
     render() {
