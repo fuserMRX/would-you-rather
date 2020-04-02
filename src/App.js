@@ -9,6 +9,7 @@ import Login from './components/Login';
 import Home from './components/Home';
 import QuestionPollWrapper from './components/QuestionPollWrapper';
 import QuestionCreater from './components/QuestionCreater';
+import LeaderBoard from './components/LeaderBoard';
 import { handleInitialData } from './actions/shared';
 
 
@@ -26,6 +27,7 @@ class App extends React.Component {
                             <Route path='/' exact component={Home} />
                             <Route path='/questions/:question_id' component={QuestionPollWrapper} />
                             <Route path='/add' component={QuestionCreater} />
+                            <Route path='/leaderboard' component={LeaderBoard} />
                         </div>:
                         <Login />
                     }
