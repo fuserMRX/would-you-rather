@@ -10,6 +10,7 @@ import Home from './components/Home';
 import QuestionPollWrapper from './components/QuestionPollWrapper';
 import QuestionCreater from './components/QuestionCreater';
 import LeaderBoard from './components/LeaderBoard';
+import Nav from './components/Nav';
 import { handleInitialData } from './actions/shared';
 
 
@@ -23,12 +24,15 @@ class App extends React.Component {
                 <LoadingBar style={{ backgroundColor: 'green', height: '5px' }} />
                 <div className='container'>
                     {this.props.enableLogin ?
-                        <div>
-                            <Route path='/' exact component={Home} />
-                            <Route path='/questions/:question_id' component={QuestionPollWrapper} />
-                            <Route path='/add' component={QuestionCreater} />
-                            <Route path='/leaderboard' component={LeaderBoard} />
-                        </div>:
+                        <>
+                            <Nav />
+                            <div>
+                                <Route path='/' exact component={Home} />
+                                <Route path='/questions/:question_id' component={QuestionPollWrapper} />
+                                <Route path='/add' component={QuestionCreater} />
+                                <Route path='/leaderboard' component={LeaderBoard} />
+                            </div>
+                        </> :
                         <Login />
                     }
                 </div>
