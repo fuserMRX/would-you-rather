@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { Redirect } from 'react-router-dom';
 
 // Local Import
 import { WouldYou } from '../helpers/viewHelper';
@@ -34,6 +35,10 @@ class QuestionPoll extends Component {
         const question = this.props.questionInfo.currentQuestion;
 
         const asks = 'asks';
+
+        if (!Object.keys(question).length) {
+            return <Redirect to='/404' />;
+        }
 
         return (
             <div>

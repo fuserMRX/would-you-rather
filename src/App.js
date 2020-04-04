@@ -2,7 +2,7 @@ import React from 'react';
 import './App.css';
 import { connect } from 'react-redux';
 import LoadingBar from 'react-redux-loading';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Cookies from 'universal-cookie';
 
 // Local imports
@@ -12,11 +12,11 @@ import QuestionPollWrapper from './components/QuestionPollWrapper';
 import QuestionCreater from './components/QuestionCreater';
 import LeaderBoard from './components/LeaderBoard';
 import Nav from './components/Nav';
+import GenericNotFound from './components/GenericNotFound';
 import { handleInitialData } from './actions/shared';
 import { setAuthedUser } from './actions/authedUser';
 
 const cookies = new Cookies();
-
 
 class App extends React.Component {
     componentDidMount() {
@@ -37,13 +37,15 @@ class App extends React.Component {
                 <div className='container'>
                     {this.props.enableLogin ?
                         <>
-                            <Nav />
-                            <div>
+                            {this.props.enableNavBar && <Nav />}
+                            <Switch>
                                 <Route path='/' exact component={Home} />
-                                <Route path='/questions/:question_id' component={QuestionPollWrapper} />
-                                <Route path='/add' component={QuestionCreater} />
-                                <Route path='/leaderboard' component={LeaderBoard} />
-                            </div>
+                                <Route path='/questions/:question_id' exact component={QuestionPollWrapper} />
+                                <Route path='/add' exact component={QuestionCreater} />
+                                <Route path='/leaderboard' exact component={LeaderBoard} />
+                                <Route path='/404' component={GenericNotFound} />
+                                <Route component={GenericNotFound} />
+                            </Switch>
                         </> :
                         // Don't show logIn screen on reload if user already loggedIn
                         (!this.props.enableLogin && cookies.get('authedUser')) ?
@@ -56,9 +58,10 @@ class App extends React.Component {
     }
 }
 
-const mapeStateToProps = ({ authedUser }) => {
+const mapeStateToProps = ({ authedUser, navbar }) => {
     return {
-        enableLogin: authedUser !== null
+        enableLogin: authedUser !== null,
+        enableNavBar: navbar
     };
 };
 

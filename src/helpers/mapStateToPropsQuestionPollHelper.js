@@ -6,13 +6,13 @@
 */
 export const mapStateToPropsQuestionPollHelper = ({ users, questions, authedUser }, props) => {
     const { question_id } = props.match.params;
-    const authedUserAnswersIds = Object.keys(Object.values(users).filter(user => user.id === authedUser)[0].answers);
+    const authedUserAnswersIds = Object.keys(Object.values(users).filter(user => user.id === authedUser)[0].answers) || [];
 
     // Get current question info
-    const currentQuestion = Object.values(questions).filter( question => question.id === question_id)[0];
+    const currentQuestion = Object.values(questions).filter( question => question.id === question_id)[0] || {};
 
     // Get info about questioner
-    const questionUser = Object.values(users).filter(user => user.id === currentQuestion.author)[0];
+    const questionUser = Object.values(users).filter(user => user.id === currentQuestion.author)[0] || {};
 
     // Default scenario - the question for the authedUser is unanswered
     const pollInformation = {
