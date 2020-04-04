@@ -1,29 +1,31 @@
-import React, { Component } from 'react';
-import { Redirect } from 'react-router-dom';
+import React from 'react';
+import { useHistory } from 'react-router-dom';
+import { connect } from 'react-redux';
+import Cookies from 'universal-cookie';
 
-class Logout extends Component {
+// Local Import
+import { removeAuthedUser } from '../actions/authedUser';
 
-    state = {
-        toLogin: false
-    }
+const Logout = (props) => {
 
-    clickHandler = () => {
-        this.setState(() => ({
-            toLogin: true
-        }));
-    }
+    const logout = 'Logout';
+    const history = useHistory();
 
-    render() {
-        const logout = 'Logout';
-        if (this.state.toLogin) {
-            return <Redirect to='' />;
-        }
-        return (
-            <div>
-                <button onClick={this.clickHandler}>{logout}</button>
-            </div>
-        );
-    }
-}
+    const clickHandler = () => {
+        const cookies = new Cookies();
+        const { dispatch } = props;
 
-export default Logout;
+        cookies.remove('authedUser', { path: '/' });
+
+        history.push('/');
+        dispatch(removeAuthedUser());
+    };
+
+    return (
+        <div>
+            <button onClick={clickHandler}>{logout}</button>
+        </div>
+    );
+};
+
+export default connect()(Logout);

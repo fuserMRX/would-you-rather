@@ -3,6 +3,7 @@ import './App.css';
 import { connect } from 'react-redux';
 import LoadingBar from 'react-redux-loading';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
+import Cookies from 'universal-cookie';
 
 // Local imports
 import Login from './components/Login';
@@ -12,11 +13,22 @@ import QuestionCreater from './components/QuestionCreater';
 import LeaderBoard from './components/LeaderBoard';
 import Nav from './components/Nav';
 import { handleInitialData } from './actions/shared';
+import { setAuthedUser } from './actions/authedUser';
+
+const cookies = new Cookies();
 
 
 class App extends React.Component {
     componentDidMount() {
-        this.props.dispatch(handleInitialData());
+        const { dispatch } = this.props;
+        const authedUser = cookies.get('authedUser');
+        dispatch(handleInitialData())
+            .then(() => {
+                // If cookie already set up for authedUser then set authedUser in the store
+                if (authedUser) {
+                    dispatch(setAuthedUser(authedUser));
+                }
+            });
     }
     render() {
         return (
@@ -33,7 +45,10 @@ class App extends React.Component {
                                 <Route path='/leaderboard' component={LeaderBoard} />
                             </div>
                         </> :
-                        <Login />
+                        // Don't show logIn screen on reload if user already loggedIn
+                        (!this.props.enableLogin && cookies.get('authedUser')) ?
+                            null :
+                            <Login />
                     }
                 </div>
             </Router>

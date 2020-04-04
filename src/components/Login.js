@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Select from 'react-select';
 import { showLoading, hideLoading } from 'react-redux-loading';
+import Cookies from 'universal-cookie';
 
 // Local imports
 import { setAuthedUser } from '../actions/authedUser';
@@ -22,12 +23,20 @@ class Login extends Component {
 
     handleSubmit = (e) => {
         e.preventDefault();
+
         const { dispatch } = this.props;
+        const cookies = new Cookies();
+
         dispatch(showLoading());
         dispatch(setAuthedUser(this.state.value));
-        setTimeout(function(){
+        setTimeout(function () {
             dispatch(hideLoading());
         }, 300);
+
+        // Temporary solution - not for production!!!
+        // Create ability to show needed page after reload if user already logged in - for smooth customer experience
+        // Non secure solution as normally we should get this info from DB
+        cookies.set('authedUser', this.state.value, { path: '/' });
     }
 
     render() {
