@@ -6,7 +6,7 @@ const CustomSelectOption = ({ value, label, customAbbreviation }) => (
         <div style={{ marginLeft: '10px', color: '#ccc' }}>
             <img src={customAbbreviation} alt={label} width='30'/>
         </div>
-        <div>{label}</div>
+        <div className="loginName">{label}</div>
     </div>
 );
 
