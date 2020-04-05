@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 
 const LoggedInUserNav = (props) => {
     const helloText = 'Hello';
@@ -11,11 +12,15 @@ const LoggedInUserNav = (props) => {
     );
 };
 
+LoggedInUserNav.propTypes = {
+    userInfo: PropTypes.object.isRequired
+};
+
 const mapStateToProps = ({ users, authedUser }) => {
     return {
         userInfo: Object.values(users)
             .filter(({ id }) => id === authedUser)
-            .map(({ name, avatarURL }) => ({ name, avatarURL }))[0]
+            .map(({ name, avatarURL }) => ({ name, avatarURL }))[0] || {}
     };
 };
 

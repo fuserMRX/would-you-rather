@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
 // Local Import
 import { WouldYou } from '../helpers/viewHelper';
@@ -11,6 +12,11 @@ class QuestionPoll extends Component {
 
     state = {
         value: null,
+    }
+
+    static propTypes = {
+        dispatch: PropTypes.func.isRequired,
+        questionInfo: PropTypes.object.isRequired
     }
 
     onRadioChange = (e) => {

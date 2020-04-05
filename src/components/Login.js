@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import Select from 'react-select';
 import { showLoading, hideLoading } from 'react-redux-loading';
@@ -11,6 +12,11 @@ import CustomSelectOption from './CustomSelectOption';
 class Login extends Component {
     state = {
         value: null
+    };
+
+    static propTypes = {
+        dispatch: PropTypes.func.isRequired,
+        loginUsers: PropTypes.array.isRequired
     };
 
     handleChange = (e) => {

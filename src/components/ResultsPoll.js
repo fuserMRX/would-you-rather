@@ -1,6 +1,7 @@
 import React from 'react';
 import ProgressBar from 'react-bootstrap/ProgressBar';
 import Badge from 'react-bootstrap/Badge';
+import PropTypes from 'prop-types';
 
 // Local Import
 import { WouldYou } from '../helpers/viewHelper';
@@ -56,6 +57,10 @@ const ResultsPoll = (props) => {
             <p>{optionTwoInfo.percentText}</p>
         </div>
     );
+};
+
+ResultsPoll.propTypes = {
+    resultsInfo: PropTypes.object.isRequired
 };
 
 export default ResultsPoll;

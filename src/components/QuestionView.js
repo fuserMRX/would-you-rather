@@ -1,5 +1,6 @@
 import React from 'react';
 import { useHistory } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
 
 const QuestionView = (props) => {
@@ -20,6 +21,11 @@ const QuestionView = (props) => {
             <button onClick={handleViewPoll}>{viewPoll}</button>
         </>
     );
+};
+
+QuestionView.propTypes = {
+    question: PropTypes.object.isRequired,
+    questionOwnerData: PropTypes.object.isRequired
 };
 
 export default QuestionView;

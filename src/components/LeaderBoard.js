@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-
+import PropTypes from 'prop-types';
 
 const LeaderBoard = (props) => {
     const answeredQuestions = 'Answered questions';
@@ -41,6 +41,10 @@ const mapStateToProps = ({ users }) => {
             };
         }).sort((userA, userB) => userB.score - userA.score).slice(0, 3)
     };
+};
+
+LeaderBoard.propTypes = {
+    usersInfo: PropTypes.array.isRequired
 };
 
 export default connect(mapStateToProps)(LeaderBoard);

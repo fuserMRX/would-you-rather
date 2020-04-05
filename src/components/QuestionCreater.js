@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
-
+import PropTypes from 'prop-types';
 
 // Local Import
 import { WouldYou } from '../helpers/viewHelper';
@@ -14,6 +14,10 @@ class QuestionCreater extends Component {
         optionOne: '',
         optionTwo: '',
         toHome: false
+    }
+
+    static propTypes = {
+        dispatch: PropTypes.func.isRequired
     }
 
     handleChange = (e) => {

@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 
 // Local imports
 import { mapStateToPropsQuestionPollHelper as mapStateToProps } from '../helpers/mapStateToPropsQuestionPollHelper';
@@ -15,6 +16,10 @@ const QuestionPollWrapper = (props) => {
             }
         </>
     );
+};
+
+QuestionPollWrapper.propTypes = {
+    isQuestionAnswered: PropTypes.bool.isRequired
 };
 
 export default connect(mapStateToProps)(QuestionPollWrapper);

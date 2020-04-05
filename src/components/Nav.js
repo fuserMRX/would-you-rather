@@ -2,7 +2,7 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 
 // Local Import
-import LoggedInUser from './LoggedInUserNav';
+import LoggedInUserNav from './LoggedInUserNav';
 import Logout from './Logout';
 
 const Nav = () => {
@@ -28,7 +28,7 @@ const Nav = () => {
                     </NavLink>
                 </li>
                 <li>
-                    <LoggedInUser />
+                    <LoggedInUserNav />
                 </li>
                 <li>
                     <Logout />

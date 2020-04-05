@@ -1,17 +1,21 @@
-// import React from 'react';
 import React, { Component } from 'react';
-
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 
 //Local Imports
 import { hideNavbar } from '../actions/navbar';
 
-
 class GenericNotFound extends Component {
+
+    static propTypes = {
+        dispatch: PropTypes.func.isRequired,
+    }
+
     componentDidMount() {
         const { dispatch } = this.props;
         dispatch(hideNavbar(false));
     }
+
     render() {
         return (
             <div>
