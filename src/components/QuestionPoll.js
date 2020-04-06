@@ -2,6 +2,11 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 import PropTypes from 'prop-types';
+import Card from 'react-bootstrap/Card';
+import Button from 'react-bootstrap/Button';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
+import Container from 'react-bootstrap/Container';
 
 // Local Import
 import { WouldYou } from '../helpers/viewHelper';
@@ -47,29 +52,45 @@ class QuestionPoll extends Component {
         }
 
         return (
-            <div>
-                <p>{questionerName} {asks}</p>
-                <img src={avatar} alt={questionerName} />
-                <h3>{WouldYou}...</h3>
-                <form onSubmit={this.onSubmit}>
-                    <div onChange={this.onRadioChange}>
-                        <ul className='options'>
-                            <li>
-                                <label>
-                                    <input type="radio" value="optionOne" name={this.props.questionInfo.authedUser} />
-                                    <span> {question.optionOne.text}</span>
-                                </label>
-                            </li>
-                            <li>
-                                <label>
-                                    <input type="radio" value="optionTwo" name={this.props.questionInfo.authedUser} />
-                                    <span> {question.optionTwo.text}</span>
-                                </label>
-                            </li>
-                        </ul>
-                    </div>
-                    <button type="submit" disabled={!this.state.value}>{Submit}</button>
-                </form>
+            <div className="quesitonPoll">
+                <Card
+                    style={{ width: '30rem' }}
+                    bg="light"
+                    border="light"
+                >
+                    <Card.Body>
+                        <Card.Header><b>{questionerName} {asks}:</b></Card.Header>
+                        <Card.Title className="text-center"><b>{WouldYou}...</b></Card.Title>
+                        <Container fluid="xs">
+                            <Row>
+                                <Col xs={4}>
+                                    <img className="questionPollImg circle" src={avatar} alt={questionerName} />
+                                </Col>
+                                <Col xs={8}>
+                                    <form onSubmit={this.onSubmit}>
+                                        <div onChange={this.onRadioChange}>
+                                            <ul className='options'>
+                                                <li>
+                                                    <label>
+                                                        <input type="radio" value="optionOne" name={this.props.questionInfo.authedUser} />
+                                                        <span> {question.optionOne.text}</span>
+                                                    </label>
+                                                </li>
+                                                <li>
+                                                    <label>
+                                                        <input type="radio" value="optionTwo" name={this.props.questionInfo.authedUser} />
+                                                        <span> {question.optionTwo.text}</span>
+                                                    </label>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <Button type="submit" variant="success" disabled={!this.state.value}>{Submit}</Button>
+                                    </form>
+                                </Col>
+                            </Row>
+                        </Container>
+                    </Card.Body>
+                </Card>
             </div>
         );
     }
