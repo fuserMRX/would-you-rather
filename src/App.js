@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import LoadingBar from 'react-redux-loading';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Cookies from 'universal-cookie';
+import Spinner from 'react-bootstrap/Spinner';
 
 // Local imports
 import Login from './components/Login';
@@ -49,7 +50,11 @@ class App extends React.Component {
                         </> :
                         // Don't show logIn screen on reload if user already loggedIn
                         (!this.props.enableLogin && cookies.get('authedUser')) ?
-                            null :
+                            <div className="text-center">
+                                <Spinner animation="border" variant="success" role="status">
+                                    <span className="sr-only"></span>
+                                </Spinner>
+                            </div> :
                             <Login />
                     }
                 </div>

@@ -46,3 +46,47 @@ li {
 .loginName {
   font-family: "Aclonica";
 }
+
+.questions {
+  border-style: solid;
+  border-color: #d8dce3;
+}
+
+.nav {
+  justify-content: center;
+}
+
+.nav-tabs .nav-item.nav-link {
+  color: black;
+  flex-grow: 1;
+}
+
+.nav-tabs .nav-item.nav-link.active {
+  background-color: #d8dce3;
+  color: green;
+}
+
+.tab-content .tab-pane.active {
+  display: flex;
+  justify-content: center;
+}
+
+.tab-content .card {
+  flex-direction: unset;
+  justify-content: center;
+  align-items: center;
+  box-shadow: inset 0 0 0 1px #b6bac2;
+}
+
+.tab-content .card .card-img {
+  height: 80px;
+  width: unset;
+  margin-left: 20px;
+  border-radius: 50%;
+}
+
+.circle {
+  width: 200px;
+  height: 200px;
+  background-color: #d0fac0;
+}
