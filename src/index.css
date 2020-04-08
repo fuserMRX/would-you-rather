@@ -86,12 +86,11 @@ li {
 }
 
 .circle {
-  width: 200px;
-  height: 200px;
   background-color: #d0fac0;
 }
 
-.quesitonPoll {
+.quesitonPoll,
+.resultsPoll {
   display: flex;
   justify-content: center;
 }
@@ -116,3 +115,34 @@ li {
 .quesitonPoll .btn {
   margin-left: 12px;
 }
+
+.questionPollBorder {
+  border-left: 1px solid #b6bac2;
+}
+
+.resultPollBorder {
+  border-left: 1px solid #b6bac2;
+  position: relative;
+}
+
+.resultPollBorderWithoutVote {
+  box-shadow: inset 0 0 0 1px #b6bac2;
+}
+
+.questionResultImg {
+  height: 80px;
+  margin-left: 20px;
+  border-radius: 50%;
+}
+
+.resultImageBlock {
+  display: flex;
+  align-items: center;
+}
+
+.votedBadge {
+  position: absolute;
+  bottom: 80%;
+  left: 90%;
+}
+

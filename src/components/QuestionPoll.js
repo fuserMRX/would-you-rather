@@ -61,12 +61,12 @@ class QuestionPoll extends Component {
                     <Card.Body>
                         <Card.Header><b>{questionerName} {asks}:</b></Card.Header>
                         <Card.Title className="text-center"><b>{WouldYou}...</b></Card.Title>
-                        <Container fluid="xs">
+                        <Container fluid="xs" className="containerResult">
                             <Row>
                                 <Col xs={4}>
                                     <img className="questionPollImg circle" src={avatar} alt={questionerName} />
                                 </Col>
-                                <Col xs={8}>
+                                <Col xs={8} className="questionPollBorder">
                                     <form onSubmit={this.onSubmit}>
                                         <div onChange={this.onRadioChange}>
                                             <ul className='options'>

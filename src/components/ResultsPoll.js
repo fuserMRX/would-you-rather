@@ -1,7 +1,10 @@
 import React from 'react';
 import ProgressBar from 'react-bootstrap/ProgressBar';
-import Badge from 'react-bootstrap/Badge';
 import PropTypes from 'prop-types';
+import Card from 'react-bootstrap/Card';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
+import Container from 'react-bootstrap/Container';
 
 // Local Import
 import { WouldYou } from '../helpers/viewHelper';
@@ -35,26 +38,57 @@ const ResultsPoll = (props) => {
     const optionOneInfo = getVotesPercentageInfo(optionOneVotes, allVotes, authedUser);
     const optionTwoInfo = getVotesPercentageInfo(optionTwoVotes, allVotes, authedUser);
 
-    const VOTE = 'You vote';
     const AskedByText = 'Asked by';
     const RESULTS = 'Results:';
 
     return (
-        <div>
-            <p>{AskedByText} {props.resultsInfo.questionUserName}</p>
-            <img src={props.resultsInfo.questionUserAvatar} alt={props.resultsInfo.questionUserName} />
-            <h5>{RESULTS}</h5>
-            <hr/>
+        <div className="resultsPoll">
+            <Card
+                style={{ width: '30rem' }}
+                bg="light"
+                border="light"
+            >
+                <Card.Body>
+                    <Card.Header><b>{AskedByText} {props.resultsInfo.questionUserName}</b></Card.Header>
+                    <Card.Title></Card.Title>
+                    <Container fluid="xs">
+                        <Row>
+                            <Col xs={4} className="resultImageBlock">
+                                <img
+                                    className="questionResultImg circle"
+                                    src={props.resultsInfo.questionUserAvatar}
+                                    alt={props.resultsInfo.questionUserName}
+                                />
+                            </Col>
+                            <Col xs={8} className="resultPollBorder">
+                                <h4><b>{RESULTS}</b></h4>
 
-            <p>{WouldYou} {question.optionOne.text}?</p>
-            <ProgressBar variant="success" now={optionOneInfo.precentRate} label={`${optionOneInfo.precentRate}%`} />
-            {optionOneInfo.isVotedByAuthedUser && <Badge variant="success">{VOTE}</Badge>}
-            <p>{optionOneInfo.percentText}</p>
-
-            <p>{WouldYou} {question.optionTwo.text}?</p>
-            <ProgressBar variant="success" now={optionTwoInfo.precentRate} label={`${optionTwoInfo.precentRate}%`} />
-            {optionTwoInfo.isVotedByAuthedUser && <Badge variant="success">{VOTE}</Badge>}
-            <p>{optionTwoInfo.percentText}</p>
+                                <Card border={`${optionOneInfo.isVotedByAuthedUser ? 'success' : 'resultPollBorderWithoutVote'}`}
+                                    style={{ width: '17.5rem' }}
+                                >
+                                    <Card.Header>{WouldYou} {question.optionOne.text}?</Card.Header>
+                                    {optionOneInfo.isVotedByAuthedUser && <img src="/assets/images/approved.png" className="votedBadge" width='50'/>}
+                                    <Card.Body>
+                                        <ProgressBar variant="success" now={optionOneInfo.precentRate} label={`${optionOneInfo.precentRate}%`} />
+                                        <p>{optionOneInfo.percentText}</p>
+                                    </Card.Body>
+                                </Card>
+                                <Card.Text></Card.Text>
+                                <Card border={`${optionTwoInfo.isVotedByAuthedUser ? 'success' : 'resultPollBorderWithoutVote'}`}
+                                    style={{ width: '17.5rem' }}
+                                >
+                                    <Card.Header>{WouldYou} {question.optionTwo.text}?</Card.Header>
+                                    {optionTwoInfo.isVotedByAuthedUser && <img src="/assets/images/approved.png" className="votedBadge" width='50' />}
+                                    <Card.Body>
+                                        <ProgressBar variant="success" now={optionTwoInfo.precentRate} label={`${optionTwoInfo.precentRate}%`} />
+                                        <p>{optionTwoInfo.percentText}</p>
+                                    </Card.Body>
+                                </Card>
+                            </Col>
+                        </Row>
+                    </Container>
+                </Card.Body>
+            </Card>
         </div>
     );
 };
