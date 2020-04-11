@@ -10,7 +10,7 @@ import Spinner from 'react-bootstrap/Spinner';
 import Login from './components/Login';
 import Home from './components/Home';
 import QuestionPollWrapper from './components/QuestionPollWrapper';
-import QuestionCreater from './components/QuestionCreater';
+import QuestionCreaterForm from './components/QuestionCreaterForm';
 import LeaderBoard from './components/LeaderBoard';
 import Nav from './components/Nav';
 import GenericNotFound from './components/GenericNotFound';
@@ -42,7 +42,7 @@ class App extends React.Component {
                             <Switch>
                                 <Route path='/' exact component={Home} />
                                 <Route path='/questions/:question_id' exact component={QuestionPollWrapper} />
-                                <Route path='/add' exact component={QuestionCreater} />
+                                <Route path='/add' exact component={QuestionCreaterForm} />
                                 <Route path='/leaderboard' exact component={LeaderBoard} />
                                 <Route path='/404' component={GenericNotFound} />
                                 <Route component={GenericNotFound} />

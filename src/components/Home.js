@@ -7,6 +7,7 @@ import UnansweredQuestionsList from './UnansweredQuestionsList';
 import AnsweredQuestionsList from './AnsweredQuestionsList';
 
 const Home = () => {
+    // Switch active tab by using state
     const [key, setKey] = useState('unquesitons');
 
     return (

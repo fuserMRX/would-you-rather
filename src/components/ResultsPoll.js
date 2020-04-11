@@ -53,14 +53,14 @@ const ResultsPoll = (props) => {
                     <Card.Title></Card.Title>
                     <Container fluid="xs">
                         <Row>
-                            <Col xs={4} className="resultImageBlock">
+                            <Col md={4} className="resultImageBlock">
                                 <img
                                     className="questionResultImg circle"
                                     src={props.resultsInfo.questionUserAvatar}
                                     alt={props.resultsInfo.questionUserName}
                                 />
                             </Col>
-                            <Col xs={8} className="resultPollBorder">
+                            <Col md={8} className="resultPollBorder">
                                 <h4><b>{RESULTS}</b></h4>
 
                                 <Card border={`${optionOneInfo.isVotedByAuthedUser ? 'success' : 'resultPollBorderWithoutVote'}`}

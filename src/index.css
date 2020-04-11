@@ -90,7 +90,8 @@ li {
 }
 
 .quesitonPoll,
-.resultsPoll {
+.resultsPoll,
+.questionCreater {
   display: flex;
   justify-content: center;
 }
@@ -144,5 +145,74 @@ li {
   position: absolute;
   bottom: 80%;
   left: 90%;
+}
+
+.leaderBoardAll {
+  width: 40rem;
+  margin-left: 20%;
+}
+
+.leaderBoardAll .card {
+  justify-content: center
+}
+
+.leaderBoardItemContainer {
+  align-self: center;
+}
+
+.leaderBoardItemContainer.triangle-topleft {
+  width: 0;
+  height: 0;
+  border-top: 40px solid #b6bac2;
+  border-right: 40px solid transparent;
+  position: absolute;
+  left: 0;
+  bottom: 75%;
+}
+
+.leaderBoardItemContainer.triangle-topleft-image-gold {
+  position: absolute;
+  height: 12%;
+  width: 12%;
+  left: 0;
+  bottom: 86%;
+  background-image: url(/assets/images/challengeCup.png);
+  background-repeat: no-repeat;
+  background-size: contain;
+  z-index: 1;
+}
+
+.leaderBoardItemContainer.triangle-topleft-image-silver {
+  position: absolute;
+  height: 12%;
+  width: 12%;
+  left: 0;
+  bottom: 86%;
+  background-image: url(/assets/images/challengeCup_silver.png);
+  background-repeat: no-repeat;
+  background-size: contain;
+  z-index: 1;
+}
+
+.leaderBoardItemContainer.triangle-topleft-image-bronze {
+  position: absolute;
+  height: 12%;
+  width: 12%;
+  left: 0;
+  bottom: 86%;
+  background-image: url(/assets/images/challengeCup_bronze.png);
+  background-repeat: no-repeat;
+  background-size: contain;
+  z-index: 1;
+}
+
+.leaderBoardItemContainer.leaderMiddle {
+  border-left: 1px solid #b6bac2;
+  border-right: 1px solid #b6bac2;
+}
+
+.leaderBoardImg {
+  height: 80px;
+  border-radius: 50%;
 }
 
