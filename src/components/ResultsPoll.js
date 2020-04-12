@@ -67,7 +67,7 @@ const ResultsPoll = (props) => {
                                     style={{ width: '17.5rem' }}
                                 >
                                     <Card.Header>{WouldYou} {question.optionOne.text}?</Card.Header>
-                                    {optionOneInfo.isVotedByAuthedUser && <img src="/assets/images/approved.png" className="votedBadge" width='50'/>}
+                                    {optionOneInfo.isVotedByAuthedUser && <img src="/assets/images/approved.png" className="votedBadge" width='50' alt='aprroved result'/>}
                                     <Card.Body>
                                         <ProgressBar variant="success" now={optionOneInfo.precentRate} label={`${optionOneInfo.precentRate}%`} />
                                         <p>{optionOneInfo.percentText}</p>
@@ -78,7 +78,7 @@ const ResultsPoll = (props) => {
                                     style={{ width: '17.5rem' }}
                                 >
                                     <Card.Header>{WouldYou} {question.optionTwo.text}?</Card.Header>
-                                    {optionTwoInfo.isVotedByAuthedUser && <img src="/assets/images/approved.png" className="votedBadge" width='50' />}
+                                    {optionTwoInfo.isVotedByAuthedUser && <img src="/assets/images/approved.png" className="votedBadge" width='50' alt='aprroved result'/>}
                                     <Card.Body>
                                         <ProgressBar variant="success" now={optionTwoInfo.precentRate} label={`${optionTwoInfo.precentRate}%`} />
                                         <p>{optionTwoInfo.percentText}</p>
