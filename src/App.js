@@ -12,7 +12,7 @@ import Home from './components/Home';
 import QuestionPollWrapper from './components/QuestionPollWrapper';
 import QuestionCreaterForm from './components/QuestionCreaterForm';
 import LeaderBoard from './components/LeaderBoard';
-import Nav from './components/Nav';
+import Navigation from './components/Nav';
 import GenericNotFound from './components/GenericNotFound';
 import { handleInitialData } from './actions/shared';
 import { setAuthedUser } from './actions/authedUser';
@@ -38,7 +38,7 @@ class App extends React.Component {
                 <div className='container'>
                     {this.props.enableLogin ?
                         <>
-                            {this.props.enableNavBar && <Nav />}
+                            {this.props.enableNavBar && <Navigation />}
                             <Switch>
                                 <Route path='/' exact component={Home} />
                                 <Route path='/questions/:question_id' exact component={QuestionPollWrapper} />

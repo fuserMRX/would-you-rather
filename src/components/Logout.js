@@ -3,6 +3,7 @@ import { useHistory } from 'react-router-dom';
 import { connect } from 'react-redux';
 import Cookies from 'universal-cookie';
 import PropTypes from 'prop-types';
+import Button from 'react-bootstrap/Button';
 
 // Local Import
 import { removeAuthedUser } from '../actions/authedUser';
@@ -24,7 +25,7 @@ const Logout = (props) => {
 
     return (
         <div>
-            <button onClick={clickHandler}>{logout}</button>
+            <Button onClick={clickHandler} className="logoutLink" variant="outline-light">{logout}</Button>
         </div>
     );
 };

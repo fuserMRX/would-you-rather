@@ -5,9 +5,9 @@ import PropTypes from 'prop-types';
 const LoggedInUserNav = (props) => {
     const helloText = 'Hello';
     return (
-        <div>
-            <p>{helloText}, {props.userInfo.name}</p>
-            <img src={props.userInfo.avatarURL} alt={props.userInfo.name} width='30'/>
+        <div className="userLogo">
+            <p className="userName">{helloText}, {props.userInfo.name}</p>
+            <img className="circle userLogoImage" src={props.userInfo.avatarURL} alt={props.userInfo.name} />
         </div>
     );
 };

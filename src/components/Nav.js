@@ -5,7 +5,7 @@ import { NavLink } from 'react-router-dom';
 import LoggedInUserNav from './LoggedInUserNav';
 import Logout from './Logout';
 
-const Nav = () => {
+const Navigation = () => {
     const home = 'Home';
     const newQuestion = 'New Question';
     const leaderboard = 'LeaderBoard';
@@ -13,17 +13,17 @@ const Nav = () => {
         <nav className='nav'>
             <ul>
                 <li>
-                    <NavLink to='/' exact activeClassName='active'>
+                    <NavLink to='/' exact activeClassName='activeTab'>
                         {home}
                     </NavLink>
                 </li>
                 <li>
-                    <NavLink to='/add' activeClassName='active'>
+                    <NavLink to='/add' activeClassName='activeTab'>
                         {newQuestion}
                     </NavLink>
                 </li>
                 <li>
-                    <NavLink to='/leaderboard' activeClassName='active'>
+                    <NavLink to='/leaderboard' activeClassName='activeTab'>
                         {leaderboard}
                     </NavLink>
                 </li>
@@ -38,4 +38,4 @@ const Nav = () => {
     );
 };
 
-export default Nav;
+export default Navigation;

@@ -27,10 +27,34 @@ img {
   flex-direction: row;
   justify-content: flex-start;
   text-decoration: none;
+  align-items: center;
 }
 
 .nav li:first-child {
   padding-left: 0;
+}
+
+.nav li a {
+  color: rgb(10, 10, 10);
+  text-decoration: none;
+  display: block;
+  padding: 5px;
+}
+
+.nav li a:hover,
+.activeTab {
+  background-color: rgb(169, 240, 169);
+  background-size: auto;
+  border-radius: 50%;
+}
+
+.nav .logoutLink {
+  border-radius: 50%;
+  color: unset;
+}
+
+nav .logoutLink:hover {
+  background-color: rgb(169, 240, 169);
 }
 
 ul {
@@ -216,3 +240,16 @@ li {
   border-radius: 50%;
 }
 
+.userLogo {
+  display: flex;
+  align-items: center;
+}
+
+.userLogo .userName {
+  display: contents;
+}
+
+.userLogoImage {
+  width: 15%;
+  margin-left: 7%;
+}
