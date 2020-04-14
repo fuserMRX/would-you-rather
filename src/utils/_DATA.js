@@ -146,6 +146,26 @@ let users = {
       }
     }
   }
+
+export function _createUser(user) {
+  return new Promise((res, rej) => {
+
+    setTimeout(() => {
+      users = {
+        ...users,
+        [user.userId]: {
+          id: user.userId,
+          name: user.userName,
+          avatarURL: '/assets/images/no-name.png',
+          answers: {},
+          questions: []
+        }
+      }
+
+      res()
+    }, 1000)
+  })
+}
   
   export function _saveQuestion (question) {
     return new Promise((res, rej) => {

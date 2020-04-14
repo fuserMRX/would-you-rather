@@ -22,7 +22,7 @@ export const mapStateToProps = (viewParam) => {
         });
 
         // LoggedIn user answers
-        const answers = Object.keys(loggedInUserData[0].answers);
+        const answers = (loggedInUserData.length && Object.keys(loggedInUserData[0].answers)) || [];
 
         // Answered and unanswered quesitons for the loggedIn user
         let sortedQuestions = [];

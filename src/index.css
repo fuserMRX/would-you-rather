@@ -250,6 +250,15 @@ li {
 }
 
 .userLogoImage {
-  width: 15%;
-  margin-left: 7%;
+  margin-left: 10px;
+}
+
+.loginButtonSection {
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+.loginButtons {
+  display: flex;
+  flex-direction: column;
 }

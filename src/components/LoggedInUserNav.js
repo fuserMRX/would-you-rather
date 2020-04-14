@@ -7,7 +7,7 @@ const LoggedInUserNav = (props) => {
     return (
         <div className="userLogo">
             <p className="userName">{helloText}, {props.userInfo.name}</p>
-            <img className="circle userLogoImage" src={props.userInfo.avatarURL} alt={props.userInfo.name} />
+            <img className="circle userLogoImage" src={props.userInfo.avatarURL} alt={props.userInfo.name} width='40'/>
         </div>
     );
 };

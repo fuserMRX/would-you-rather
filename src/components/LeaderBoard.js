@@ -56,7 +56,7 @@ const LeaderBoard = (props) => {
 
 const mapStateToProps = ({ users }) => {
     return {
-        usersInfo: Object.values(users).map(({ id, name, avatarURL, answers, questions }) => {
+        usersInfo: Object.values(users).map(({ id, name, avatarURL, answers, questions=[] }) => {
             const answeredQuestions = Object.keys(answers).length || 0;
             const createdQuestions = questions.length || 0;
             const score = answeredQuestions + createdQuestions;

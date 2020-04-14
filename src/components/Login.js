@@ -11,10 +11,12 @@ import Cookies from 'universal-cookie';
 // Local imports
 import { setAuthedUser } from '../actions/authedUser';
 import CustomSelectOption from './CustomSelectOption';
+import CreateUserModal from './CreateUserModal';
 
 class Login extends Component {
     state = {
-        value: null
+        value: null,
+        modalShow: false
     };
 
     static propTypes = {
@@ -48,31 +50,58 @@ class Login extends Component {
         cookies.set('authedUser', this.state.value, { path: '/' });
     }
 
+    /**
+    * handleModal
+    * @description Show or hide modal for user creation
+    * @param {object} event - SyntheticEvent object
+    * @param {boolean} modalAvailabilityFlag - modalAvailabilityFlag boolean value - hide modal flag
+    * @returns {void}
+    */
+    handleModal = (event, modalAvailabilityFlag) => {
+        // event value is taken in order not to handle click with inline function: () =>
+        // in other words - performance saver
+        const eventValue = event && event.target.value;
+        const flag = eventValue ? !!eventValue : modalAvailabilityFlag;
+        this.setState(() => ({
+            modalShow: flag
+        }));
+    }
+
     render() {
         const PLACEHOLDER = 'Select User';
         const LOGIN = 'Sign in';
         const WELCOME = 'Welcome to Would You Rather App!';
         const SIGNIN = 'Please sign in to continue';
+        const CREATE = 'Sign up';
         return (
-            <Jumbotron fluid>
-                <div className="text-center container">
-                    <h3><b>{WELCOME}</b></h3>
-                    <h5>{SIGNIN}</h5>
-                    <Image src="/assets/images/AI-jail.png" fluid />
-                    <form onSubmit={this.handleSubmit}>
-                        <Select
-                            closeMenuOnSelect={true}
-                            placeholder={PLACEHOLDER}
-                            onChange={this.handleChange}
-                            options={this.props.loginUsers}
-                            formatOptionLabel={CustomSelectOption} // Customize select option with image
-                        />
-                        <Button className='btn' type='submit' variant="success" disabled={!this.state.value}>
-                            {LOGIN}
-                        </Button>
-                    </form>
-                </div>
-            </Jumbotron>
+            <>
+                <Jumbotron fluid>
+                    <div className="text-center container">
+                        <h3><b>{WELCOME}</b></h3>
+                        <h5>{SIGNIN}</h5>
+                        <Image src="/assets/images/AI-jail.png" fluid />
+                        <form onSubmit={this.handleSubmit}>
+                            <Select
+                                closeMenuOnSelect={true}
+                                placeholder={PLACEHOLDER}
+                                onChange={this.handleChange}
+                                options={this.props.loginUsers}
+                                formatOptionLabel={CustomSelectOption} // Customize select option with image
+                            />
+                            <div className="loginButtons">
+                                <Button className='btn' type='submit' variant="success" disabled={!this.state.value}>
+                                    {LOGIN}
+                                </Button>
+                                <p className="loginButtonSection"><b>OR</b></p>
+                                <Button className='btn' variant="success" onClick={this.handleModal} value={true}>
+                                    {CREATE}
+                                </Button>
+                            </div>
+                        </form>
+                    </div>
+                </Jumbotron>
+                <CreateUserModal show={this.state.modalShow} onHide={this.handleModal}/>
+            </>
         );
     }
 }

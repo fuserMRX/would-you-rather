@@ -1,7 +1,9 @@
 import { RECEIVE_USERS } from '../actions/users';
 import { SAVE_ANSWER } from '../actions/answers';
 import { SAVE_QUESTION } from '../actions/questions';
+import { CREATE_USER } from '../actions/users';
 
+const newUserDefaultAvatar = '/assets/images/no-name.png';
 
 
 const users = (state = {}, action) => {
@@ -28,6 +30,17 @@ const users = (state = {}, action) => {
                 [action.question.author]: {
                     ...state[action.question.author],
                     questions: state[action.question.author].questions.concat([action.question.id])
+                }
+            };
+        case CREATE_USER:
+            return {
+                ...state,
+                [action.user.userId]: {
+                    id: action.user.userId,
+                    name: action.user.userName,
+                    avatarURL: newUserDefaultAvatar,
+                    answers: {},
+                    questions: []
                 }
             };
         default:
