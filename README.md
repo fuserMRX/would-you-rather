@@ -31,3 +31,11 @@ when the page is reloaded (non appropriate for production usage)
 * UI is beautified by react-bootsrap
 
 * Loading bar and spinner are added to see state, store changes progress
+
+#### Lints installed for the consistency with Style Guide
+
+* [Husky](https://github.com/typicode/husky/blob/master/README.md)
+* [Stylelint](https://github.com/stylelint/stylelint/blob/master/README.md)
+* [Lint-staged](https://github.com/okonet/lint-staged#readme)
+* [Eslint](https://github.com/eslint/eslint/blob/master/README.md)
+* [Babel-eslint](https://github.com/babel/babel-eslint/blob/master/README.md)
