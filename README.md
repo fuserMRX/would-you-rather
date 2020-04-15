@@ -26,11 +26,11 @@ Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 * DATA.js is modified to enable new user creation
 
 * universal-cookie package is added in order to provide better user experience
-when the page is reloaded (non appropriate for production usage)
+when the page is reloaded (non appropriate for production usage) => removed because of the reviewer demand
 
 * UI is beautified by react-bootsrap
 
-* Loading bar and spinner are added to see state, store changes progress
+* Loading bar is added to see state, store changes progress
 
 #### Lints installed for the consistency with Style Guide
 
