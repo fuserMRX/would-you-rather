@@ -1,7 +1,6 @@
 import React from 'react';
 import { useHistory } from 'react-router-dom';
 import { connect } from 'react-redux';
-import Cookies from 'universal-cookie';
 import PropTypes from 'prop-types';
 import Button from 'react-bootstrap/Button';
 
@@ -14,10 +13,7 @@ const Logout = (props) => {
     const history = useHistory();
 
     const clickHandler = () => {
-        const cookies = new Cookies();
         const { dispatch } = props;
-
-        cookies.remove('authedUser', { path: '/' });
 
         history.push('/');
         dispatch(removeAuthedUser());

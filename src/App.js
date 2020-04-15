@@ -3,8 +3,6 @@ import './App.css';
 import { connect } from 'react-redux';
 import LoadingBar from 'react-redux-loading';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import Cookies from 'universal-cookie';
-import Spinner from 'react-bootstrap/Spinner';
 
 // Local imports
 import Login from './components/Login';
@@ -15,21 +13,11 @@ import LeaderBoard from './components/LeaderBoard';
 import Navigation from './components/Nav';
 import GenericNotFound from './components/GenericNotFound';
 import { handleInitialData } from './actions/shared';
-import { setAuthedUser } from './actions/authedUser';
-
-const cookies = new Cookies();
 
 class App extends React.Component {
     componentDidMount() {
         const { dispatch } = this.props;
-        const authedUser = cookies.get('authedUser');
-        dispatch(handleInitialData())
-            .then(() => {
-                // If cookie already set up for authedUser then set authedUser in the store
-                if (authedUser) {
-                    dispatch(setAuthedUser(authedUser));
-                }
-            });
+        dispatch(handleInitialData());
     }
     render() {
         return (
@@ -47,15 +35,7 @@ class App extends React.Component {
                                 <Route path='/404' component={GenericNotFound} />
                                 <Route component={GenericNotFound} />
                             </Switch>
-                        </> :
-                        // Don't show logIn screen on reload if user already loggedIn
-                        (!this.props.enableLogin && cookies.get('authedUser')) ?
-                            <div className="text-center">
-                                <Spinner animation="border" variant="success" role="status">
-                                    <span className="sr-only"></span>
-                                </Spinner>
-                            </div> :
-                            <Login />
+                        </> :<Login />
                     }
                 </div>
             </Router>

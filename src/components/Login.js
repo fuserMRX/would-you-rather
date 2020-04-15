@@ -6,7 +6,6 @@ import { showLoading, hideLoading } from 'react-redux-loading';
 import Jumbotron from 'react-bootstrap/Jumbotron';
 import Button from 'react-bootstrap/Button';
 import Image from 'react-bootstrap/Image';
-import Cookies from 'universal-cookie';
 
 // Local imports
 import { setAuthedUser } from '../actions/authedUser';
@@ -36,18 +35,12 @@ class Login extends Component {
         e.preventDefault();
 
         const { dispatch } = this.props;
-        const cookies = new Cookies();
 
         dispatch(showLoading());
         dispatch(setAuthedUser(this.state.value));
         setTimeout(function () {
             dispatch(hideLoading());
         }, 300);
-
-        // Temporary solution - not for production!!!
-        // Create ability to show needed page after reload if user already logged in - for smooth customer experience
-        // Non secure solution as normally we should get this info from DB
-        cookies.set('authedUser', this.state.value, { path: '/' });
     }
 
     /**
